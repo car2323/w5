@@ -4,12 +4,12 @@ $(document).ready(function(){
    var phrases = [
    "position0 array.",
    "position1 array.",
-   "position2 array",
-   "position3 array",
-   "position4 array",
-   "position5 array",
-   "position6 array",
-   "position7 array",
+   "position2 array.",
+   "position3 array.",
+   "position4 array.",
+   "position5 array.",
+   "position6 array.",
+   "position7 array.",
     ];
     $("ul").empty();
     $("ul").hide();
