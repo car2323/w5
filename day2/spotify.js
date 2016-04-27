@@ -8,12 +8,21 @@ $(document).on("ready", function () {
         console.log("It worked!");
         var all_artists_array = all_artists.artists.items /*saco de todo el objeto que me dio spotify solo el array con los artistas*/
         //console.log(all_artists_array);
-        displayinfo(all_artists_array);
-        $(".artist_title_search").on("click", function(){
-             console.log($(this.id));
-             console.log($(this));
+        displayinfo(all_artists_array);            //event
+
+        // <li class="artist_title_search" data-artist-id="5a2EaR3hamoenG9rDuVn8j">
+        
+        $(".artist_title_search").on("click", function(event){ 
+            var x = $(event.currentTarget).data("artist-id");
+
+
+             // var x = $(".id_artist").data("artist-id");
+
+
+             console.log("hola", x);
+             console.log(event.currentTarget);
             $.ajax({
-                url: "https://api.spotify.com/v1/artists/58lV9VcRSjABbAbfWS6skp/albums",
+                url: "https://api.spotify.com/v1/artists/"+x+"/albums",
                  success: function (all_albums) {
                     console.log("It worked!");
                      
@@ -43,8 +52,6 @@ $(document).on("ready", function () {
 
     
 });
-
-
 function displayinfo (all_artists_arrayp) {
   all_artists_arrayp.forEach(function(oneArtistp) {
     var string = "";
@@ -57,12 +64,11 @@ function displayinfo (all_artists_arrayp) {
         string=``;
     } 
     var html = `
-      <li class="artist_title_search">
-        <p>Name: <a href="#">${oneArtistp.name}</a></p>
+      <li class="artist_title_search" data-artist-id="${oneArtistp.id}">
+        <p>Name: <a href="#" class="id_artist">${oneArtistp.name}</a></p>
         <p>Popularity: ${oneArtistp.popularity}</p>
         <p>Type: ${oneArtistp.type}</p>
-        <p>URI: ${oneArtistp.uri}</p>
-        <p> ID: ${oneArtistp.id}<p>
+        <p></p>
          ${string}
       </li>`;
     $(".js-artist-list").append(html);
@@ -74,10 +80,9 @@ function displayinfoalbums(all_albumsp){
   all_albumsp.forEach(function(onealbum) {
     var html = `
       <li>
-        <p>Name: ${onealbum.name}</a></p>
+        <p>Name: ${onealbum.name}</p>
         <p>Type: ${onealbum.type}</p>
         <p>Album_Type: ${onealbum.album_type}</p>
-        <p>URI: ${onealbum.uri}</p>
         <p>------------------------------</p>
       </li>`;
     $(".js-artist-list").append(html);
