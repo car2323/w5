@@ -7,38 +7,41 @@ $(document).on("ready", function () {
       success: function (all_artists) {
         console.log("It worked!");
         var all_artists_array = all_artists.artists.items /*saco de todo el objeto que me dio spotify solo el array con los artistas*/
-        console.log(all_artists_array);
+        //console.log(all_artists_array);
         displayinfo(all_artists_array);
         $(".artist_title_search").on("click", function(){
-            console.log(this);
+             console.log($(this.id));
+             console.log($(this));
             $.ajax({
-              url: "https://api.spotify.com/v1/search?type=artist&query="+ $("#text_name").val(),
-                 success: function (all_allbums) {
-                 console.log("It worked!");
-                 var all_albums_array = all_artists.artists.items /*saco de todo el objeto que me dio spotify solo el array con los artistas*/
-                 console.log(all_albums_array);
-                 displayinfo(all_albums_array); 
+                url: "https://api.spotify.com/v1/artists/58lV9VcRSjABbAbfWS6skp/albums",
+                 success: function (all_albums) {
+                    console.log("It worked!");
+                     
+                    var all_albums_array = all_albums.items /*saco de todo el objeto que me dio spotify solo el array con los artistas*/
+                   console.log(all_albums_array);
+                    displayinfoalbums(all_albums_array);
                  },
-
-                 error: function (all_artists) {
+                 error: function (all_albums) {
                  console.log("It failed. :( ");
                  console.log(theError.responseJSON);
-                 }
-            });
-        });
-
-    });
-      },
+                 } /*cierre del evento error*/
+            });   
+          
+        });/*cierre de on click*/
+      }, /*Cierre del evento success*/
 
       error: function (all_artists) {
         console.log("It failed. :( ");
         console.log(theError.responseJSON);
-      }
+      } /*cierre del evento error*/
     });
   });
     $(".serach_form").on("click", function (event) {
       event.preventDefault();
      });
+
+
+    
 });
 
 
@@ -54,12 +57,28 @@ function displayinfo (all_artists_arrayp) {
         string=``;
     } 
     var html = `
-      <li>
-        <p>Name: <a href="#" class="artist_title_search">${oneArtistp.name}</a></p>
+      <li class="artist_title_search">
+        <p>Name: <a href="#">${oneArtistp.name}</a></p>
         <p>Popularity: ${oneArtistp.popularity}</p>
         <p>Type: ${oneArtistp.type}</p>
         <p>URI: ${oneArtistp.uri}</p>
+        <p> ID: ${oneArtistp.id}<p>
          ${string}
+      </li>`;
+    $(".js-artist-list").append(html);
+  });
+}
+function displayinfoalbums(all_albumsp){
+  console.log(all_albumsp);
+  $(".js-artist-list").empty();
+  all_albumsp.forEach(function(onealbum) {
+    var html = `
+      <li>
+        <p>Name: ${onealbum.name}</a></p>
+        <p>Type: ${onealbum.type}</p>
+        <p>Album_Type: ${onealbum.album_type}</p>
+        <p>URI: ${onealbum.uri}</p>
+        <p>------------------------------</p>
       </li>`;
     $(".js-artist-list").append(html);
   });
