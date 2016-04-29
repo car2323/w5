@@ -12,7 +12,7 @@ function displayPosition (data){
 	$(".js-set-longitude").text(data.coords.longitude);
     $(".js-button-search").on("click", function (event) {
        event.preventDefault();
-       var link_img = "http://maps.googleapis.com/maps/api/staticmap?size=1000x1000&zoom=19&center="+ data.coords.latitude+","+ data.coords.longitude;
+       var link_img = "http://maps.googleapis.com/maps/api/staticmap?size=1000x1000&zoom=20&center="+ data.coords.latitude+","+ data.coords.longitude;
 	  $.ajax({
           url: link_img,           
           success: function () {   

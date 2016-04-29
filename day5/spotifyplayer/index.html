@@ -1,0 +1,69 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+	<script src="player.js"></script>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
+	<script src="bootstrap/js/bootstrap.js"></script>
+</head>
+<body>
+	<div class="widget">
+		<form class="js-search_track">
+			<input class="js-text_input" placeholder="Search track"></input>
+			<button class="js-btn">search</button>
+			<button class="js-btn2">See more</button>
+		</form>
+		<div class="header">
+		<!-- Try adding/removing these classes: -->
+		<!-- disabled -->
+		<!-- playing -->
+		<div class="btn-play disabled"></div>
+
+		<div class="metadata">
+		  <p class="title"></p>
+		  <p class="author"></p>
+
+
+
+		  <div class="seekbar">
+		    <progress class="progressbar" value="0" max="30"></progress>
+		  </div>
+		</div>
+		</div>
+		<div class="cover">
+		<img class="img_front_disc"src="">
+		</div>
+
+		<audio class="play_pause"src="https://p.scdn.co/mp3-preview/8e9c5ffdc38e91659bfe8b6bd44650dfc25a3d31"></audio>
+	</div>
+<!-- agregue el modal que va a destruir mi codigo-->
+
+<div class="modal fade js-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <!-- Close button -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span>&times;</span>
+        </button>
+
+        <h2 class="artist_name_title"></h2>
+      </div>
+
+      <div class="modal-body">
+        <p>This is the modal's body.</p>
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- final del modal que va a destruir mi codigo-->
+
+
+
+</body>
+</html>
