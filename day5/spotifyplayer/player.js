@@ -54,7 +54,7 @@ function displayinfo (one_track){
         string="";
     } 
     console.log(one_track);
-    $(".title").text(one_track.album.name);
+    $(".title").text(one_track.name);
    // console.log(one_track.album.name);
    // console.log(one_track.artists[0].name);
     $(".author").empty();
@@ -108,15 +108,21 @@ function display_more_info(all_tracks){
   //console.log("im ready to show modal");
   $(".artist_name_title").empty();
   $(".modal-body").empty();
-  $("artist_name_title").text("More Artists");
+  $(".artist_name_title").text("More Artists");
   $(".modal-body").empty();
   all_tracks.forEach(function(one_track, i) {
     if(i!==0){
                             //data-artist-id="${oneArtistp.id}"   
-      $(".modal-body").append("<p><a href='#'class='js-recall_button' data-artist-id='" + one_track.artists[0].id + "'> Artist:  " + one_track.artists[0].name +'</a></p>');
-      //console.log(one_track);
+      $(".modal-body").append("<p><a href='#'class='js-recall_button' data-track-name='" + one_track.name + "'> Artist:  " + one_track.name +'</a></p>');
+      console.log(one_track);
     }
   });
+  console.log(all_tracks);
   $(".modal").modal("show");
-  //$(".js-recall_button").trigger("click");
+  $(".js-recall_button").on("click",function(){
+    $(".modal").modal("hide");
+    var new_track = $(event.currentTarget).data("track-name");
+    $(".js-text_input").val(new_track);
+    $(".js-btn").trigger("click");
+  });
 };
