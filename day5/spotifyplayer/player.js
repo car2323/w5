@@ -111,9 +111,8 @@ function display_more_info(all_tracks){
   $(".artist_name_title").text("More Artists");
   $(".modal-body").empty();
   all_tracks.forEach(function(one_track, i) {
-    if(i!==0){
-                            //data-artist-id="${oneArtistp.id}"   
-      $(".modal-body").append("<p><a href='#'class='js-recall_button' data-track-name='" + one_track.name + "'> Artist:  " + one_track.name +'</a></p>');
+    if(i!==0){  
+      $(".modal-body").append("<p><a href='#'class='js-recall_button' data-track-name='" + one_track.name + "'> TRACK:  " + one_track.name +'</a></p>');
       console.log(one_track);
     }
   });
