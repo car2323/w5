@@ -5,6 +5,7 @@ $(document).on("ready", function () {
       console.log($(event.currentTarget).data("artist-id"));
       $(".js-btn2").show();
     $.ajax({
+      post
       url: "https://api.spotify.com/v1/search?type=track&query="+ $(".js-text_input").val(),
       success: function (all_tracks) {
           console.log("It worked!");
@@ -19,7 +20,7 @@ $(document).on("ready", function () {
             //$(".js-text_input").val($(event.currentTarget).data("artist-id"));
                 $.ajax({
                    url: "https://api.spotify.com/v1/artists/"+id_artist,
-                   success: function (artist) {
+                   success: function (artist) /*puedo tener un llamado a la funcion directo */
                    var one_artist = artist;
                    display_artist_info(one_artist);
                    },
