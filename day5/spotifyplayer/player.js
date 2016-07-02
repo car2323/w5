@@ -5,14 +5,13 @@ $(document).on("ready", function () {
       console.log($(event.currentTarget).data("artist-id"));
       $(".js-btn2").show();
     $.ajax({
-      post
       url: "https://api.spotify.com/v1/search?type=track&query="+ $(".js-text_input").val(),
       success: function (all_tracks) {
           console.log("It worked!");
           var one_track = all_tracks.tracks.items[0];
           var id_artist = one_track.artists[0].id;
-          //console.log (id_artist);
-          //console.log(one_track);
+          console.log (id_artist);
+          console.log(one_track);
           displayinfo(one_track);
           play_pause(one_track);
           $(".play_pause").on("timeupdate",printTime);
